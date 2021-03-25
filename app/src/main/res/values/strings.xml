@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fencing counter</string>
+    <string name="Player1">Player 1</string>
+    <string name="Player2">Player 2</string>
+    <string name="Player1points">0</string>
+    <string name="Player2points">0</string>
+</resources>

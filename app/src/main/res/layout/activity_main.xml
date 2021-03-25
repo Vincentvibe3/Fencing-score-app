@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/player2add"
+        android:layout_width="84dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:insetLeft="2dp"
+        android:insetTop="2dp"
+        android:insetRight="2dp"
+        android:insetBottom="2dp"
+        android:onClick="player2_add"
+        app:backgroundTint="#009688"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/plus"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/player2score"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/Player2"
+        android:textAppearance="@style/Title"
+        app:layout_constraintBottom_toTopOf="@+id/player2minus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/player2score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Player1points"
+        android:textAppearance="@style/Body"
+        app:layout_constraintBaseline_toBaselineOf="@+id/player2minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/player2minus"
+        android:layout_width="84dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="188dp"
+        android:insetLeft="2dp"
+        android:insetTop="2dp"
+        android:insetRight="2dp"
+        android:insetBottom="2dp"
+        android:onClick="player2_remove"
+        app:backgroundTint="#009688"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/ic_baseline_remove_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Player1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/Player1"
+        android:textAppearance="@style/Title"
+        app:layout_constraintBottom_toTopOf="@+id/player1minus"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/player1minus"
+        android:layout_width="84dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="496dp"
+        android:insetLeft="2dp"
+        android:insetTop="2dp"
+        android:insetRight="2dp"
+        android:insetBottom="2dp"
+        android:onClick="player1_remove"
+        app:backgroundTint="#009688"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/ic_baseline_remove_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/player1score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Player1points"
+        android:textAppearance="@style/Body"
+        app:layout_constraintBaseline_toBaselineOf="@+id/player1minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/player1add"
+        android:layout_width="84dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:insetLeft="2dp"
+        android:insetTop="2dp"
+        android:insetRight="2dp"
+        android:insetBottom="2dp"
+        android:onClick="player1_add"
+        app:backgroundTint="#009688"
+        app:cornerRadius="100dp"
+        app:icon="@drawable/plus"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/player1score"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/blackcard"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:onClick="blackcard"
+        app:backgroundTint="#222222"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player2add" />
+
+    <Button
+        android:id="@+id/blackcard2"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:onClick="blackcard"
+        app:backgroundTint="#222222"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1add" />
+
+    <Button
+        android:id="@+id/yellowcard2"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:enabled="true"
+        android:onClick="yellowcard"
+        android:shadowColor="#00FFFFFF"
+        app:backgroundTint="#FFEB3B"
+        app:elevation="0dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/redcard2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/redcard2"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:onClick="redcard1"
+        app:backgroundTint="#F44336"
+        app:elevation="0dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/blackcard2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/redcard"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:onClick="redcard2"
+        app:backgroundTint="#F44336"
+        app:layout_constraintBaseline_toBaselineOf="@+id/blackcard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/yellowcard"
+        android:layout_width="wrap_content"
+        android:layout_height="135dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:onClick="yellowcard"
+        app:backgroundTint="#FFEB3B"
+        app:layout_constraintBaseline_toBaselineOf="@+id/redcard"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="210dp" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="03:00"
+        android:textAppearance="@style/Body"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:onClick="start_timer"
+        android:text="Start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:onClick="pause_timer"
+        android:text="Stop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="76dp"
+        android:onClick="reset_timer"
+        android:text="Reset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="404dp"
+        android:onClick="double_points"
+        android:text="Double"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginRight="68dp"
+        android:onClick="reset_points"
+        android:text="RESET point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

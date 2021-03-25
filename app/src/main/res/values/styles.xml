@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Title" parent ="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">@dimen/Title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Body" parent ="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">@dimen/Body_text_size</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+</resources>
