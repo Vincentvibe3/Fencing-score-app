@@ -1,4 +1,4 @@
-package com.example.fencingcounter;
+package com.example.fencingscore;
 
 import android.content.Context;
 

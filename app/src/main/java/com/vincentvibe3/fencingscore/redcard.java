@@ -1,10 +1,8 @@
-package com.example.fencingcounter;
+package com.vincentvibe3.fencingscore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 public class redcard extends AppCompatActivity {
 

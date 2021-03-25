@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fencing counter</string>
+    <string name="app_name">Fencing Score</string>
     <string name="Player1">Player 1</string>
     <string name="Player2">Player 2</string>
     <string name="Player1points">0</string>

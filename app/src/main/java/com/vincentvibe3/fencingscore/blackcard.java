@@ -1,4 +1,4 @@
-package com.example.fencingcounter;
+package com.vincentvibe3.fencingscore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
