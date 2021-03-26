@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private int player2_score = 0;
     private int timer_seconds = 180;
     private boolean timer_running = false;
+    private int timer_radio_id = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +135,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void reset_timer(View view){
         timer_running = false;
-        timer_seconds = 180;
+        switch (timer_radio_id) {
+            case 1:
+                timer_seconds = 60;
+                break;
+            case 2:
+                timer_seconds = 120;
+                break;
+            case 3:
+                timer_seconds = 180;
+                break;
+        }
     }
 
     private void run_timer(){
@@ -158,6 +170,37 @@ public class MainActivity extends AppCompatActivity {
                 timer_handler.postDelayed(this,1000);
             }
         });
+    }
+
+    public void timer_radio_check(View view){
+        boolean checked = ((RadioButton) view ).isChecked();
+
+        switch (view.getId()){
+            case R.id.timer_radio1:
+                if (checked){
+                    timer_seconds = 60;
+                    timer_radio_id = 1;
+                }
+                break;
+            case R.id.timer_radio2:
+                if (checked){
+                    timer_seconds = 120;
+                    timer_radio_id = 2;
+                }
+                break;
+            case R.id.timer_radio3:
+                if (checked){
+                    timer_seconds = 180;
+                    timer_radio_id = 3;
+                }
+                break;
+        }
+/*        TextView timer = findViewById(R.id.timer);
+        int minutes = (timer_seconds % 3600) / 60;
+        int seconds = timer_seconds % 60;
+
+        String formatted_time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+        timer.setText(formatted_time);*/
     }
 
 }

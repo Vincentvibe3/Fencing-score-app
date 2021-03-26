@@ -277,4 +277,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Player1"
+        app:layout_constraintTop_toBottomOf="@+id/player1minus">
+
+        <RadioButton
+            android:id="@+id/timer_radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:onClick="timer_radio_check"
+            android:text="1:00"
+            tools:layout_editor_absoluteX="161dp"
+            tools:layout_editor_absoluteY="117dp" />
+
+        <RadioButton
+            android:id="@+id/timer_radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="timer_radio_check"
+            android:text="2:00"
+            tools:layout_editor_absoluteX="188dp"
+            tools:layout_editor_absoluteY="158dp" />
+
+        <RadioButton
+            android:id="@+id/timer_radio3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="timer_radio_check"
+            android:text="3:00"
+            tools:layout_editor_absoluteX="164dp"
+            tools:layout_editor_absoluteY="169dp" />
+
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
