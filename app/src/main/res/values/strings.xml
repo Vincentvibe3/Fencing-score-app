@@ -4,4 +4,10 @@
     <string name="Player2">Player 2</string>
     <string name="Player1points">0</string>
     <string name="Player2points">0</string>
+    <string name="timer_1">1:00</string>
+    <string name="timer_2">2:00</string>
+    <string name="timer_3">3:00</string>
+    <string name="max_score_1">5</string>
+    <string name="max_score_2">10</string>
+    <string name="max_score_3">15</string>
 </resources>

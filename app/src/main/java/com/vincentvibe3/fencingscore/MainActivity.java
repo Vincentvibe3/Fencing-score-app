@@ -14,11 +14,12 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int player1_score = 0;
-    private int player2_score = 0;
-    private int timer_seconds = 180;
-    private boolean timer_running = false;
-    private int timer_radio_id = 3;
+    private int player1_score;
+    private int player2_score;
+    private int timer_seconds;
+    private boolean timer_running;
+    private int timer_radio_id;
+    private int max_score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,20 @@ public class MainActivity extends AppCompatActivity {
             Button remove2 = findViewById(R.id.player2minus);
             remove2.setEnabled(false);
         }
+        set_defaults();
         run_timer();
+    }
+
+    public void set_defaults(){
+        player1_score = player2_score = 0;
+        timer_seconds = 180;
+        timer_running = false;
+        timer_radio_id = 3;
+        max_score = 15;
+        RadioButton default_timer_radio = findViewById(R.id.timer_radio3);
+        default_timer_radio.setChecked(true);
+        RadioButton default_score_radio = findViewById(R.id.score_radio3);
+        default_score_radio.setChecked(true);
     }
 
     @Override
@@ -50,8 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void player1_add(View view){
         TextView player1_text = findViewById(R.id.player1score);
-        ++player1_score;
-        player1_text.setText(String.valueOf(player1_score));
+        if (player1_score < max_score){
+            ++player1_score;
+            player1_text.setText(String.valueOf(player1_score));
+        }
         if (player1_score > 0){
             Button remove1 = findViewById(R.id.player1minus);
             remove1.setEnabled(true);
@@ -60,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void player2_add(View view){
         TextView player2_text = findViewById(R.id.player2score);
-        ++player2_score;
-        player2_text.setText(String.valueOf(player2_score));
+        if (player2_score < max_score){
+            ++player2_score;
+            player2_text.setText(String.valueOf(player2_score));
+        }
         if (player2_score > 0){
             Button remove2 = findViewById(R.id.player2minus);
             remove2.setEnabled(true);
@@ -173,34 +191,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void timer_radio_check(View view){
-        boolean checked = ((RadioButton) view ).isChecked();
+        boolean timer_checked = ((RadioButton) view).isChecked();
 
         switch (view.getId()){
             case R.id.timer_radio1:
-                if (checked){
+                if (timer_checked){
                     timer_seconds = 60;
                     timer_radio_id = 1;
                 }
                 break;
             case R.id.timer_radio2:
-                if (checked){
+                if (timer_checked){
                     timer_seconds = 120;
                     timer_radio_id = 2;
                 }
                 break;
             case R.id.timer_radio3:
-                if (checked){
+                if (timer_checked){
                     timer_seconds = 180;
                     timer_radio_id = 3;
                 }
                 break;
         }
-/*        TextView timer = findViewById(R.id.timer);
-        int minutes = (timer_seconds % 3600) / 60;
-        int seconds = timer_seconds % 60;
+    }
 
-        String formatted_time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-        timer.setText(formatted_time);*/
+    public void score_radio_check(View view){
+        System.out.println("Radio chosen");
+        boolean score_checked = ((RadioButton) view).isChecked();
+
+        switch (view.getId()){
+            case R.id.score_radio1:
+                if (score_checked){
+                    max_score = 5;
+                }
+                break;
+            case R.id.score_radio2:
+                if (score_checked){
+                    max_score = 10;
+                }
+                break;
+            case R.id.score_radio3:
+                if (score_checked){
+                    max_score = 15;
+                }
+                break;
+        }
     }
 
 }
