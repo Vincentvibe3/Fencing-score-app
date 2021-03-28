@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void set_defaults(){
         player1_score = player2_score = 0;
-        timer_seconds = 180;
+        timer_seconds = 1800;
         timer_running = false;
         timer_radio_id = 3;
         max_score = 15;
@@ -62,16 +62,24 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putInt("player2_score", player2_score);
     }
 
+    public void update_score_button(){
+        Button add1 = findViewById(R.id.player1add);
+        add1.setEnabled(player1_score < max_score);
+        Button remove1 = findViewById(R.id.player1minus);
+        remove1.setEnabled(player1_score > 0);
+        Button add2 = findViewById(R.id.player2add);
+        add2.setEnabled(player2_score < max_score);
+        Button remove2 = findViewById(R.id.player2minus);
+        remove2.setEnabled(player2_score > 0);
+    }
+
     public void player1_add(View view){
         TextView player1_text = findViewById(R.id.player1score);
         if (player1_score < max_score){
             ++player1_score;
             player1_text.setText(String.valueOf(player1_score));
         }
-        if (player1_score > 0){
-            Button remove1 = findViewById(R.id.player1minus);
-            remove1.setEnabled(true);
-        }
+        update_score_button();
     }
 
     public void player2_add(View view){
@@ -80,10 +88,7 @@ public class MainActivity extends AppCompatActivity {
             ++player2_score;
             player2_text.setText(String.valueOf(player2_score));
         }
-        if (player2_score > 0){
-            Button remove2 = findViewById(R.id.player2minus);
-            remove2.setEnabled(true);
-        }
+        update_score_button();
     }
 
     public void player1_remove(View view){
@@ -92,9 +97,7 @@ public class MainActivity extends AppCompatActivity {
             --player1_score;
             player1_text.setText(String.valueOf(player1_score));
         }
-
-        Button remove1 = findViewById(R.id.player1minus);
-        remove1.setEnabled(player1_score > 0);
+        update_score_button();
     }
 
     public void player2_remove(View view){
@@ -103,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
             --player2_score;
             player2_text.setText(String.valueOf(player2_score));
         }
-        Button remove2 = findViewById(R.id.player2minus);
-        remove2.setEnabled(player2_score > 0);
+        update_score_button();
     }
 
     public void  double_points(View view){
@@ -112,13 +114,25 @@ public class MainActivity extends AppCompatActivity {
         player2_add(view);
     }
 
-    public void reset_points(View view){
-        player1_score = 0;
-        player2_score = 0;
+    public void setScore(int player1, int player2){
         TextView player1_text = findViewById(R.id.player1score);
         TextView player2_text = findViewById(R.id.player2score);
-        player1_text.setText(String.valueOf(player1_score));
-        player2_text.setText(String.valueOf(player2_score));
+        if (player1 > max_score){
+            player1 = max_score;
+        }
+        if (player2 > max_score){
+            player2 = max_score;
+        }
+        player1_score = player1;
+        player2_score = player2;
+        player1_text.setText(String.valueOf(player1));
+        player2_text.setText(String.valueOf(player2));
+        update_score_button();
+
+    }
+
+    public void reset_points(View view){
+        setScore(0, 0);
     }
 
     public void redcard1(View view){
@@ -143,27 +157,33 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void start_timer(View view){
-        timer_running = true ;
+    public void start_stop_timer(View view){
+        set_timer_state(!timer_running);
     }
 
-    public void pause_timer(View view){
-        timer_running = false;
+    public void set_timer_state(boolean run){
+        timer_running = run;
+        Button start_stop = findViewById(R.id.Start_Stop_timer);
+        if (timer_running) {
+            start_stop.setText(R.string.stop);
+        } else if (!timer_running){
+            start_stop.setText(R.string.start);
+        }
     }
 
     public void reset_timer(View view){
-        timer_running = false;
         switch (timer_radio_id) {
             case 1:
-                timer_seconds = 60;
+                timer_seconds = 600;
                 break;
             case 2:
-                timer_seconds = 120;
+                timer_seconds = 1200;
                 break;
             case 3:
-                timer_seconds = 180;
+                timer_seconds = 1800;
                 break;
         }
+        set_timer_state(false);
     }
 
     private void run_timer(){
@@ -172,8 +192,8 @@ public class MainActivity extends AppCompatActivity {
         timer_handler.post(new Runnable() {
             @Override
             public void run() {
-                int minutes = (timer_seconds % 3600) / 60;
-                int seconds = timer_seconds % 60;
+                int minutes = (timer_seconds / 600) % 60;
+                int seconds = (timer_seconds / 10) % 60;
 
                 String formatted_time = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
@@ -182,10 +202,10 @@ public class MainActivity extends AppCompatActivity {
                 if (timer_running && timer_seconds > 0){
                     --timer_seconds;
                 } else if (timer_seconds<=0) {
-                    timer_running = false;
+                    set_timer_state(false);
                 }
 
-                timer_handler.postDelayed(this,1000);
+                timer_handler.postDelayed(this,100);
             }
         });
     }
@@ -195,28 +215,28 @@ public class MainActivity extends AppCompatActivity {
 
         switch (view.getId()){
             case R.id.timer_radio1:
-                if (timer_checked){
-                    timer_seconds = 60;
+                if (timer_checked) {
+                    timer_seconds = 600;
                     timer_radio_id = 1;
                 }
                 break;
             case R.id.timer_radio2:
                 if (timer_checked){
-                    timer_seconds = 120;
+                    timer_seconds = 1200;
                     timer_radio_id = 2;
                 }
                 break;
             case R.id.timer_radio3:
                 if (timer_checked){
-                    timer_seconds = 180;
+                    timer_seconds = 1800;
                     timer_radio_id = 3;
                 }
                 break;
         }
+        set_timer_state(false);
     }
 
     public void score_radio_check(View view){
-        System.out.println("Radio chosen");
         boolean score_checked = ((RadioButton) view).isChecked();
 
         switch (view.getId()){
@@ -236,6 +256,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
         }
+        reset_points(view);
+        update_score_button();
     }
 
 }

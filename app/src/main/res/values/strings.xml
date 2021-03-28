@@ -10,4 +10,10 @@
     <string name="max_score_1">5</string>
     <string name="max_score_2">10</string>
     <string name="max_score_3">15</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
+    <string name="redcard">Red card</string>
+    <string name="yellowcard">Yellow card</string>
+    <string name="blackcard">Black card</string>
+    <string name="reset">Reset</string>
 </resources>

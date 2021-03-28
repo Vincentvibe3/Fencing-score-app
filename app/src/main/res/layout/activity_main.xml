@@ -1,360 +1,488 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/app_bg">
 
-    <Button
-        android:id="@+id/player2add"
-        android:layout_width="84dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:insetLeft="2dp"
-        android:insetTop="2dp"
-        android:insetRight="2dp"
-        android:insetBottom="2dp"
-        android:onClick="player2_add"
-        app:backgroundTint="#009688"
-        app:cornerRadius="100dp"
-        app:icon="@drawable/plus"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/player2score"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/player"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="24dp"
-        android:onClick="score_radio_check"
-        android:text="@string/Player2"
-        android:textAppearance="@style/Title"
-        app:layout_constraintBottom_toTopOf="@+id/player2minus"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:liftOnScroll="true">
 
-    <TextView
-        android:id="@+id/player2score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Player1points"
-        android:textAppearance="@style/Body"
-        app:layout_constraintBaseline_toBaselineOf="@+id/player2minus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/app_bg"
+            android:paddingLeft="24dp"
+            app:title="@string/app_name"
+            app:titleTextAppearance="@style/Body"
+            />
 
-    <Button
-        android:id="@+id/player2minus"
-        android:layout_width="84dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="188dp"
-        android:insetLeft="2dp"
-        android:insetTop="2dp"
-        android:insetRight="2dp"
-        android:insetBottom="2dp"
-        android:onClick="player2_remove"
-        app:backgroundTint="#009688"
-        app:cornerRadius="100dp"
-        app:icon="@drawable/ic_baseline_remove_24"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:id="@+id/Player1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/Player1"
-        android:textAppearance="@style/Title"
-        app:layout_constraintBottom_toTopOf="@+id/player1minus"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true">
 
-    <Button
-        android:id="@+id/player1minus"
-        android:layout_width="84dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="496dp"
-        android:insetLeft="2dp"
-        android:insetTop="2dp"
-        android:insetRight="2dp"
-        android:insetBottom="2dp"
-        android:onClick="player1_remove"
-        app:backgroundTint="#009688"
-        app:cornerRadius="100dp"
-        app:icon="@drawable/ic_baseline_remove_24"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteY="1dp">
 
-    <TextView
-        android:id="@+id/player1score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Player1points"
-        android:textAppearance="@style/Body"
-        app:layout_constraintBaseline_toBaselineOf="@+id/player1minus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/player1add"
-        android:layout_width="84dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:insetLeft="2dp"
-        android:insetTop="2dp"
-        android:insetRight="2dp"
-        android:insetBottom="2dp"
-        android:onClick="player1_add"
-        app:backgroundTint="#009688"
-        app:cornerRadius="100dp"
-        app:icon="@drawable/plus"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/player1score"
-        app:layout_constraintEnd_toEndOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/card_bg">
 
-    <Button
-        android:id="@+id/blackcard"
-        android:layout_width="wrap_content"
-        android:layout_height="135dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:onClick="blackcard"
-        app:backgroundTint="#222222"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player2add" />
+                    <TextView
+                        android:id="@+id/timer"
+                        android:layout_width="97dp"
+                        android:layout_height="47dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:text="03:00"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@style/Title"
+                        android:textSize="36sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/blackcard2"
-        android:layout_width="wrap_content"
-        android:layout_height="135dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:onClick="blackcard"
-        app:backgroundTint="#222222"
-        app:elevation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player1add" />
+                    <Button
+                        android:id="@+id/timer_reset"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:onClick="reset_timer"
+                        android:text="@string/reset"
+                        android:textColor="@color/orange"
+                        app:cornerRadius="5dp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/Start_Stop_timer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/Start_Stop_timer" />
 
-    <Button
-        android:id="@+id/yellowcard2"
-        android:layout_width="wrap_content"
-        android:layout_height="135dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:enabled="true"
-        android:onClick="yellowcard"
-        android:shadowColor="#00FFFFFF"
-        app:backgroundTint="#FFEB3B"
-        app:elevation="0dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/redcard2"
-        app:layout_constraintStart_toStartOf="parent" />
+                    <Button
+                        android:id="@+id/Start_Stop_timer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:elevation="0dp"
+                        android:onClick="start_stop_timer"
+                        android:outlineProvider="none"
+                        android:text="@string/start"
+                        app:cornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/timer_reset"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/timer" />
 
-    <Button
-        android:id="@+id/redcard2"
-        android:layout_width="wrap_content"
-        android:layout_height="135dp"
-        android:onClick="redcard1"
-        app:backgroundTint="#F44336"
-        app:elevation="0dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/blackcard2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Start_Stop_timer">
 
-    <Button
-        android:id="@+id/redcard"
-        android:layout_width="wrap_content"
-        android:layout_height="135dp"
-        android:onClick="redcard2"
-        app:backgroundTint="#F44336"
-        app:layout_constraintBaseline_toBaselineOf="@+id/blackcard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                        <RadioButton
+                            android:id="@+id/timer_radio1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:checked="false"
+                            android:onClick="timer_radio_check"
+                            android:text="@string/timer_1" />
 
-    <Button
-        android:id="@+id/yellowcard"
-        android:layout_width="wrap_content"
-        android:layout_height="135dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:onClick="yellowcard"
-        app:backgroundTint="#FFEB3B"
-        app:layout_constraintBaseline_toBaselineOf="@+id/redcard"
-        app:layout_constraintStart_toStartOf="parent" />
+                        <RadioButton
+                            android:id="@+id/timer_radio2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:onClick="timer_radio_check"
+                            android:text="@string/timer_2" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="210dp" />
+                        <RadioButton
+                            android:id="@+id/timer_radio3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:onClick="timer_radio_check"
+                            android:text="@string/timer_3" />
+                    </RadioGroup>
 
-    <TextView
-        android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="03:00"
-        android:textAppearance="@style/Body"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="28dp"
-        android:onClick="start_timer"
-        android:text="Start"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="pause_timer"
-        android:text="Stop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/card_bg"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="76dp"
-        android:onClick="reset_timer"
-        android:text="Reset"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginLeft="56dp"
-        android:layout_marginTop="404dp"
-        android:onClick="double_points"
-        android:text="Double"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/player1score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@string/Player1points"
+                        android:textAppearance="@style/Title"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/player2score"
+                        app:layout_constraintStart_toEndOf="@+id/player2minus" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="384dp"
-        android:layout_marginEnd="68dp"
-        android:layout_marginRight="68dp"
-        android:onClick="reset_points"
-        android:text="RESET point"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/player2score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/Player1points"
+                        android:textAppearance="@style/Title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Player1"
-        app:layout_constraintTop_toBottomOf="@+id/player1minus">
+                    <Button
+                        android:id="@+id/player1add"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="8dp"
+                        android:elevation="0dp"
+                        android:insetLeft="2dp"
+                        android:insetTop="2dp"
+                        android:insetRight="2dp"
+                        android:insetBottom="2dp"
+                        android:onClick="player1_add"
+                        android:outlineProvider="none"
+                        app:cornerRadius="5dp"
+                        app:icon="@drawable/plus"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/player2minus"
+                        app:layout_constraintEnd_toStartOf="@+id/player1minus"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/player2minus" />
 
-        <RadioButton
-            android:id="@+id/timer_radio1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:onClick="timer_radio_check"
-            android:text="@string/timer_1"
-            tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="117dp" />
+                    <Button
+                        android:id="@+id/player2add"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:elevation="0dp"
+                        android:insetLeft="2dp"
+                        android:insetTop="2dp"
+                        android:insetRight="2dp"
+                        android:insetBottom="2dp"
+                        android:onClick="player2_add"
+                        android:outlineProvider="none"
+                        app:cornerRadius="5dp"
+                        app:icon="@drawable/plus"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:layout_constraintEnd_toStartOf="@+id/player2minus"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/player2score" />
 
-        <RadioButton
-            android:id="@+id/timer_radio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="timer_radio_check"
-            android:text="@string/timer_2"
-            tools:layout_editor_absoluteX="188dp"
-            tools:layout_editor_absoluteY="158dp" />
+                    <Button
+                        android:id="@+id/player1minus"
+                        style="@style/Button"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginEnd="24dp"
+                        android:elevation="0dp"
+                        android:enabled="false"
+                        android:insetLeft="2dp"
+                        android:insetTop="2dp"
+                        android:insetRight="2dp"
+                        android:insetBottom="2dp"
+                        android:onClick="player1_remove"
+                        android:outlineProvider="none"
+                        app:cornerRadius="5dp"
+                        app:icon="@drawable/ic_baseline_remove_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/player1add"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/player1add" />
 
-        <RadioButton
-            android:id="@+id/timer_radio3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="timer_radio_check"
-            android:text="@string/timer_3"
-            tools:layout_editor_absoluteX="164dp"
-            tools:layout_editor_absoluteY="169dp" />
+                    <Button
+                        android:id="@+id/player2minus"
+                        style="@style/Button"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:elevation="0dp"
+                        android:enabled="false"
+                        android:insetLeft="2dp"
+                        android:insetTop="2dp"
+                        android:insetRight="2dp"
+                        android:insetBottom="2dp"
+                        android:onClick="player2_remove"
+                        android:outlineProvider="none"
+                        app:cornerRadius="5dp"
+                        app:icon="@drawable/ic_baseline_remove_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/player2add"
+                        app:layout_constraintEnd_toStartOf="@+id/player1add"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/player2add" />
 
-    </RadioGroup>
+                    <Button
+                        android:id="@+id/button4"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:insetTop="6dp"
+                        android:insetBottom="6dp"
+                        android:onClick="double_points"
+                        android:text="Double"
+                        app:layout_constraintEnd_toStartOf="@+id/player1add"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/player2add" />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="450dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+                    <Button
+                        android:id="@+id/button5"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:elevation="0dp"
+                        android:onClick="reset_points"
+                        android:text="@string/reset"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/button4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/player2minus" />
 
-        <RadioButton
-            android:id="@+id/score_radio1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="score_radio_check"
-            android:text="@string/max_score_1"
-            tools:layout_editor_absoluteX="137dp"
-            tools:layout_editor_absoluteY="443dp" />
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/button4">
 
-        <RadioButton
-            android:id="@+id/score_radio2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="score_radio_check"
-            android:text="@string/max_score_2"
-            tools:layout_editor_absoluteX="146dp"
-            tools:layout_editor_absoluteY="486dp" />
+                        <RadioButton
+                            android:id="@+id/score_radio1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:onClick="score_radio_check"
+                            android:text="@string/max_score_1"
+                            tools:layout_editor_absoluteX="128dp"
+                            tools:layout_editor_absoluteY="228dp" />
 
-        <RadioButton
-            android:id="@+id/score_radio3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="score_radio_check"
-            android:text="@string/max_score_3"
-            tools:layout_editor_absoluteX="249dp"
-            tools:layout_editor_absoluteY="464dp" />
+                        <RadioButton
+                            android:id="@+id/score_radio2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:onClick="score_radio_check"
+                            android:text="@string/max_score_2"
+                            tools:layout_editor_absoluteX="32dp"
+                            tools:layout_editor_absoluteY="228dp" />
 
-    </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/score_radio3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:onClick="score_radio_check"
+                            android:text="@string/max_score_3" />
+                    </RadioGroup>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/card_bg">
+
+                    <Button
+                        android:id="@+id/yellowcard2"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:elevation="0dp"
+                        android:enabled="true"
+                        android:onClick="yellowcard"
+                        android:outlineProvider="none"
+                        android:shadowColor="#00FFFFFF"
+                        app:backgroundTint="@color/yellow_card"
+                        app:elevation="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/redcard2"
+                        app:layout_constraintEnd_toStartOf="@+id/yellowcard"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/blackcard2"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:elevation="0dp"
+                        android:onClick="blackcard"
+                        android:outlineProvider="none"
+                        app:backgroundTint="@color/black_card"
+                        app:elevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/blackcard"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/redcard2" />
+
+                    <Button
+                        android:id="@+id/redcard2"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:elevation="0dp"
+                        android:onClick="redcard2"
+                        android:outlineProvider="none"
+                        app:backgroundTint="@color/red_card"
+                        app:elevation="0dp"
+                        app:layout_constraintBottom_toTopOf="@+id/blackcard2"
+                        app:layout_constraintEnd_toStartOf="@+id/redcard"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/yellowcard2" />
+
+                    <Button
+                        android:id="@+id/redcard"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:elevation="0dp"
+                        android:onClick="redcard1"
+                        android:outlineProvider="none"
+                        app:backgroundTint="@color/red_card"
+                        app:layout_constraintBottom_toTopOf="@+id/blackcard"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/redcard2"
+                        app:layout_constraintTop_toBottomOf="@+id/yellowcard" />
+
+                    <Button
+                        android:id="@+id/yellowcard"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="24dp"
+                        android:elevation="0dp"
+                        android:onClick="yellowcard"
+                        android:outlineProvider="none"
+                        app:backgroundTint="@color/yellow_card"
+                        app:layout_constraintBottom_toTopOf="@+id/redcard"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/yellowcard2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/blackcard"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="16dp"
+                        android:elevation="0dp"
+                        android:onClick="blackcard"
+                        android:outlineProvider="none"
+                        app:backgroundTint="@color/black_card"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/blackcard2"
+                        app:layout_constraintTop_toBottomOf="@+id/redcard" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

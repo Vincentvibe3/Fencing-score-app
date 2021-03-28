@@ -8,10 +8,6 @@
         <item name="android:textSize">@dimen/Body_text_size</item>
         <item name="android:textColor">@color/gray</item>
     </style>
-    <style name="LowPriorityButton" parent="TextAppearance.MaterialComponents.Button">
-        <item name="background">@color/transparent</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
     <style name="Button" parent="TextAppearance.MaterialComponents.Button">
         <item name="backgroundTint">@color/enabled_disabled</item>
     </style>
