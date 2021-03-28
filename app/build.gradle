@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.vincentvibe3.fencingscore"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -17,6 +17,11 @@ android {
     }
 
     buildTypes {
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "${applicationId}_${variant.buildType.name}_${defaultConfig.versionName}.apk"
+            }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
